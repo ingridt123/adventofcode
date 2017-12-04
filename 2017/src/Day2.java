@@ -9,7 +9,6 @@ public class Day2 {
 		
 		File file = new File("files/day2.txt");
 		ArrayList<String> in = new ArrayList<>();
-		int sum = 0;
 		
 		try {
 			Scanner scan = new Scanner(file);
@@ -22,6 +21,9 @@ public class Day2 {
 			e.printStackTrace();
 		}
 		
+		
+		// PART 1 //
+		int sum1 = 0;
 		for (String str : in) {
 			String[] temp = str.split("\t");
 			int max = Integer.MIN_VALUE;
@@ -35,10 +37,38 @@ public class Day2 {
 					max = cur;
 				}
 			}
-			sum += (max - min);
+			sum1 += (max - min);
 		}
 		
-		System.out.println(sum);
+		System.out.println(sum1);
+		
+		
+		// PART 2 //
+		int sum2 = 0;
+		for (String str : in) {
+			String[] temp = str.split("\t");
+			int[] tempInt = new int[temp.length];
+			for (int i = 0; i < temp.length; i++) {
+				tempInt[i] = Integer.parseInt(temp[i]);
+			}
+			
+			boolean done = false;
+			for (int i = 0; i < tempInt.length; i++) {
+				for (int j = 0; j < tempInt.length; j++) {
+					if (i != j && tempInt[i] % tempInt[j] == 0) {
+						sum2 += (tempInt[i] / tempInt[j]);
+						done = true;
+						break;
+					}
+				}
+				if (done) {
+					done = false;
+					break;
+				}
+			}
+		}
+		
+		System.out.println(sum2);
 		
 	}
 	
