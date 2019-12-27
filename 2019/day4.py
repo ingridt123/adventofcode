@@ -3,6 +3,8 @@
 # two adjacent digits are same
 # digits never decrease
 
+# part 2: no more than 2 matching adjacent digits
+
 string = "129334"
 integer = int(string)
 
@@ -21,13 +23,16 @@ def findPassword(min, max):
                             if num > max:
                                 return count
                             checks = [one == two, two == three, three == four, four == five, five == six]
-                            check_bool = True
-                            for i in range(len(checks)-1):
-                                if checks[i] == True and checks[i+1] == True:
-                                    check_bool = False
+                            check_bool = False
+                            for i in range(0,len(checks)):
+                                if (checks[i] == True) and ((i == 0 and checks[i+1] != True) or (i == len(checks)-1 and checks[i-1] != True)):
+                                    check_bool = True
                                     break
-                            if True in checks and check_bool:
-                                print(num, checks)
+                                elif (checks[i-1] != True) and (checks[i] == True) and (checks[i+1] != True):
+                                    check_bool = True
+                                    break
+                            if check_bool:
+                                # print(num, checks)
                                 count += 1
                             # else:
                             #     print(num)
