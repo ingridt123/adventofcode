@@ -42,7 +42,7 @@ def compute(text):
                 indexes.append(relBase + text[i+1+p])
             text = checkIndex(indexes[p], text)
             params = params // 10
-        print(i, opcode, modes, indexes)
+        # print(i, opcode, modes, indexes)
 
         # perform operation based on opcode
         if opcode == 1:         # add
@@ -53,7 +53,6 @@ def compute(text):
             i += 4
         elif opcode == 3:       # stores input
             text[indexes[0]] = int(input("Enter ID: "))
-            print(relBase, indexes[0])
             i += 2
         elif opcode == 4:       # prints output
             print("Outputting", text[indexes[0]])
@@ -80,9 +79,6 @@ def compute(text):
         else:
             print("INVALID")
             break
-        print("text[26]", text[26])
-        if len(text) > 1000:
-            print("text[1000]", text[1000])
 
 def checkIndex(index, text):
     if index >= 0 and index >= len(text):
