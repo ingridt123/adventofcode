@@ -1,6 +1,9 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 
-output = readFile("day1.txt", int)
+filename = getFilename(sys.argv)
+output = readFile(filename, int)
+
 outputDict = {}
 for o in output:
     outputDict[o] = []
@@ -22,19 +25,10 @@ def findNum2(arrDict, total):
 ### PART 1 ###
 
 nums1 = findNum1(outputDict, finalTotal)
-print(nums1[0] * nums1[1])
+print(nums1[0] * nums1[1])                      # 1005459
 
 
 ### PART 2 ###
 
 nums2 = findNum2(outputDict, finalTotal)
-print(nums2[0] * nums2[1] * nums2[2])
-
-
-# for o1 in output:
-#     for o2 in output:
-#         if 
-
-#     if total - o in output:
-#         print(o * (total - o))
-#         break
+print(nums2[0] * nums2[1] * nums2[2])           # 92643264

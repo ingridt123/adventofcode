@@ -50,7 +50,7 @@ while len(colors) != 0:
             colors.append(b)
     colors.pop(0)
 
-print(len(allColors))
+print(len(allColors))                                   # 177
 
 
 ### PART 2 ###
@@ -67,4 +67,4 @@ def countBags(bags, color):
 
 
 # subtract 1 because count includes shiny gold bag
-print(countBags(bags, 'shiny gold')-1)
+print(countBags(bags, 'shiny gold')-1)                  # 34988

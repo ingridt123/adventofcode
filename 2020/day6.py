@@ -1,12 +1,13 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 
-output = readFile("day6.txt", str, sepChar="\n")
+filename = getFilename(sys.argv)
+output = readFile(filename, str, sepChar="\n")
 
 ### PART 1 ###
 
 def addCurrentGroup1(count, currentGroup):
     return count + len(currentGroup), set()
-
 
 count1 = 0
 currentGroup = set()
@@ -20,7 +21,7 @@ for o in output:
 if len(currentGroup) != 0:
     count1, currentGroup = addCurrentGroup1(count1, currentGroup)
 
-print(count1)
+print(count1)           # 6259
 
 
 ### PART 2 ###
@@ -29,9 +30,7 @@ def addCurrentGroup2(count, currentGroup, groupSize):
     for q in currentGroup:
         if currentGroup[q] == groupSize:
             count += 1
-
     return count, dict(), 0
-
 
 count2 = 0
 currentGroup = dict()
@@ -50,4 +49,4 @@ for o in output:
 if currentGroup:
     count2, currentGroup, groupSize = addCurrentGroup2(count2, currentGroup, groupSize)
 
-print(count2)
+print(count2)           # 3178

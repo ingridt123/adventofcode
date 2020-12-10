@@ -31,7 +31,7 @@ while True:
 
     index, acc1 = executeInstruction(output, index, acc1)
 
-print(acc1)
+print(acc1)                 # 1594
 
 
 ### PART 2 ###
@@ -69,4 +69,4 @@ for i in range(len(output)):
         # print("index: " + str(i))
         break
 
-print(acc2)
+print(acc2)             # 758

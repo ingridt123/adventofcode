@@ -1,6 +1,8 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 
-output = readFile("day10.txt", int)
+filename = getFilename(sys.argv)
+output = readFile(filename, int)
 
 output.sort()
 

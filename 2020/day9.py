@@ -1,6 +1,8 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 
-output = readFile("day9.txt", int)
+filename = getFilename(sys.argv)
+output = readFile(filename, int)
 
 PREAMBLE_LENGTH = 25
 
@@ -17,7 +19,7 @@ def sumPrev(output, i, preambleLength):
     
     return False
 
-# check if group of two or more numbers sum to target
+# check if group of two or more contiguous numbers sum to target
 def sumNext(output, i, target):
     nums = []
     while sum(nums) < target:
@@ -37,7 +39,7 @@ for i in range(PREAMBLE_LENGTH, len(output)):
     if not sumPrev(output, i, PREAMBLE_LENGTH):
         num = output[i]
         break
-print(num)
+print(num)                                          # 258585477
 
 ### PART 2 ###
 
@@ -48,4 +50,4 @@ for i in range(len(output)):
         break
 min = min(result)
 max = max(result)
-print('%d + %d = %d' % (min, max, min+max))
+print('%d + %d = %d' % (min, max, min+max))         # 36981213

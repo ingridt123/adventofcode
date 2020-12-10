@@ -1,8 +1,10 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 import functools
 import operator
 
-output = readFile("day3.txt", str)
+filename = getFilename(sys.argv)
+output = readFile(filename, str)
 
 # iterate over each -- index+3 (mod length)
 # add to count if tree (#)
@@ -17,5 +19,5 @@ for o in range(len(output)):
                 counts[i] += 1
             indices[i] = (indices[i] + add[i]) % len(output[o])
 
-print(counts[1])
-print(functools.reduce(operator.mul, counts, 1))
+print(counts[1])                                        # 176
+print(functools.reduce(operator.mul, counts, 1))        # 5872458240

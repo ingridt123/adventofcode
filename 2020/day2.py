@@ -1,6 +1,9 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 
-output = readFile("day2.txt", str, sepChar="\n")
+filename = getFilename(sys.argv)
+output = readFile(filename, str, sepChar="\n")
+
 splitOutput = []
 for o in output:
     index1 = o.index("-")
@@ -26,6 +29,6 @@ for s in splitOutput:
     if (check1 and not check2) or (not check1 and check2):
         validCount2 += 1
 
-print(validCount1)
-print(validCount2)
+print(validCount1)      # 524
+print(validCount2)      # 485
 

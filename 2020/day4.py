@@ -1,7 +1,9 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 import re
 
-output = readFile("day4.txt", str, "\n")
+filename = getFilename(sys.argv)
+output = readFile(filename, str, sepChar="\n")
 
 credentials = []
 c = {}
@@ -32,7 +34,7 @@ for c in credentials:
             break
     if valid:
         count1 += 1
-print(count1)
+print(count1)                       # 260
 
 ### PART 2 ###
 count2 = 0
@@ -57,4 +59,4 @@ for c in credentials:
                 break
     if valid:
         count2 += 1
-print(count2)
+print(count2)                       # 153

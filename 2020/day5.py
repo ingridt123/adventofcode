@@ -1,7 +1,9 @@
-from utils import readFile
+import sys
+from utils import getFilename, readFile
 import math
 
-output = readFile("day5.txt", str)
+filename = getFilename(sys.argv)
+output = readFile(filename, str)
 
 def findRowCol(string, low, high):
     if len(string) == 0:
@@ -15,6 +17,9 @@ def findRowCol(string, low, high):
 MAX_ROW = 2 ** 7 - 1
 MAX_COL = 2 ** 3 - 1
 
+
+### PART 1 ###
+
 maxSeatId = -1
 allSeats = [x for x in range(MAX_ROW * 8 + MAX_COL)]
 for o in output:
@@ -26,9 +31,12 @@ for o in output:
         maxSeatId = seatId
     allSeats.remove(seatId)
 
-print(maxSeatId)
+print(maxSeatId)                    # 806
+
+
+### PART 2 ###
 
 for a in allSeats:
     if a-1 not in allSeats and a+1 not in allSeats:
-        print(a)
+        print(a)                    # 562
         break
