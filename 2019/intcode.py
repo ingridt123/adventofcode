@@ -1,20 +1,24 @@
 def readFile(filename):
-    return [int(t) for t in open("day9.txt", "r").read().split(",")]
+    return [int(t) for t in open(filename, "r").read().split(",")]
 
-def compute(text):
+def compute(text, inputNum=0, i=0):
     posMode = 0     # position mode = value stored at address # in memory
     imMode = 1      # immediate mode = # itself
     relMode = 2     # relative mode = value stored at address (relative base + #) in memory
     
     relBase = 0
+    output = []
 
-    i = 0
     while i < len(text):
         # get data from current position
         opcode = text[i] % 100
         if opcode == 99:
-            print("HALT")
-            break
+            # day 11
+            # return "HALT", text, i
+            # day 13
+            return output
+            # print("HALT")
+            # break
 
         modes = []
         indexes = []
@@ -52,10 +56,15 @@ def compute(text):
             text[indexes[2]] = text[indexes[0]] * text[indexes[1]]
             i += 4
         elif opcode == 3:       # stores input
-            text[indexes[0]] = int(input("Enter ID: "))
+            # text[indexes[0]] = int(input("Enter ID: "))
+            text[indexes[0]] = inputNum
             i += 2
         elif opcode == 4:       # prints output
-            print("Outputting", text[indexes[0]])
+            # print("Outputting", text[indexes[0]])
+            output.append(text[indexes[0]])
+            # day 11
+            # if len(output) == 2:
+            #     return output, text, i
             i += 2
         elif opcode == 5:       # jump if true
             if text[indexes[0]] != 0:
@@ -84,3 +93,5 @@ def checkIndex(index, text):
     if index >= 0 and index >= len(text):
         text += [0 for i in range(index - len(text) + 1)]
     return text
+
+compute(readFile("day11.txt"))
