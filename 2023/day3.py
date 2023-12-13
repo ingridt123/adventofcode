@@ -90,9 +90,6 @@ def findTwoAdjacentNums(starCoordX, starCoordY, step1_2, step1_3):
     else:
       firstIndex[1] = True
 
-  if x == 4 and y == 49:
-    print(nums)
-
   if len(nums) == 2:
     # print(starCoordX, starCoordY)
     return step1_3[nums[0][0]][nums[0][1]] * step1_3[nums[1][0]][nums[1][1]]
