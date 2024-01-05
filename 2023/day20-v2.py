@@ -152,7 +152,7 @@ def graphModules(modules):
       nextModType = '' if n not in modules else modules[n].dotType
       graph.add_edge(pydot.Edge(f'{modules[m].dotType}{m}', f'{nextModType}{n}', dir='forward'))
   graph.write_png('day20.png')
-  print('Graph of modules saved to day20.png')
+  print('...Graph of modules saved to day20.png...')
 
 strs = read_file('day20.txt')
 # graphModules(step1)
